@@ -255,7 +255,8 @@ class StockGUI:
  
         ttk.Label(self.frame_b, text="Select A Language").grid(column=2,row=10)
 
-        self.lang_selected = StringVar()   ## was self.x  *** this Holds STOCK - TICKER 
+        self.lang_selected = StringVar()   ## was self.x  *** this Holds STOCK - TICKER
+
         self.narr = IntVar()
         self.narr.set(0)
         self.narr1 = ttk.Checkbutton(self.frame_b, text="Narrative",
