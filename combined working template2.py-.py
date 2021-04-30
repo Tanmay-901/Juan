@@ -68,7 +68,7 @@ Dr Jones - I learned a lot from your helping me. Thank you very much, Karen
 
 import requests, json 
 import pandas as pd
-import numpy  as np
+import numpy as np
 from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showwarning
@@ -80,7 +80,7 @@ from PIL import ImageTk, Image
 ###
 import os, io, json, argparse, six
 import google.auth
-from   google.cloud import language_v1 as language
+from google.cloud import language_v1 as language
 
 class StockGUI:
     def __init__(self, guiWin, api_key):
@@ -95,11 +95,11 @@ class StockGUI:
         
         # Set styles for TK Label, Entry and Button Widgets
         self.style = ttk.Style()
-        self.style.configure("TLabel", font=("Arial",  20),foreground='black')
-        self.style.configure("TEntry", font=("Arial",  25),foreground='maroon')
-        self.style.configure("TCheckbutton",font=("Arial", 20),
+        self.style.configure("TLabel", font=("Arial",  12),foreground='black')
+        self.style.configure("TEntry", font=("Arial",  14),foreground='maroon')
+        self.style.configure("TCheckbutton",font=("Arial", 12),
                              foreground='maroon')
-        self.style.configure("TButton",font=("Arial",  20),foreground='maroon')
+        self.style.configure("TButton",font=("Arial",  12),foreground='maroon')
         
         # Create Frame inside GUI canvas
         self.mainframe = ttk.Frame(self.guiWin_, padding="15 15 15 15")
@@ -200,12 +200,12 @@ class StockGUI:
         #######  I had patterned it after the "BUTTON that was the Picture from the "TELLO Drone GUI)
         ######################################################################################
         # img_path = "C:\TAMU\Semester 5\Fundamentals of Busness programing\Group project/" # Path to GUI images
-        img_path = "/home/dude901/Desktop/Juan/"  # Path to GUI images
+        img_path = "D:" # Path to GUI images
         newsize = (480, 240)
-        self.boat_img = Image.open(img_path+"Boat_Skiier.png")
+        self.boat_img = Image.open(img_path+"\Boat_Skiier.png")
         self.boat_img = self.boat_img.resize(newsize)
         self.boat_img = ImageTk.PhotoImage(self.boat_img)        
-        self.boat_b   = Button(self.stock_frame, image=self.boat_img, 
+        self.boat_b = Button(self.stock_frame, image=self.boat_img,
                             cursor="hand2", command=self.stock_stat,
                             width=480, height=240)    ### needed to make gui image bigger
         self.boat_b.grid(column=1, row=1, rowspan=4)
