@@ -1165,7 +1165,7 @@ class StockGUI:
         ####################### YES: THIS: NARRATIVE AS A TEXT BOX ################################
         if KSF_Label == 0:
             # 1st Create Text Box
-            self.t = Text(self.guiWin_, relief='sunken', wrap='word', height=22, width=65,
+            self.t = Text(self.guiWin_, relief='sunken', wrap='word', height=21, width=65,
                           bg='maroon', fg='white', font=('Arial', 12))
             self.t.grid(column=1, columnspan=2, row=10
                         , rowspan=1, sticky=(N,W),pady=5, padx=5)
