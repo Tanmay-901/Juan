@@ -65,6 +65,7 @@ Note7:
     EASY to just concatenate the pieces and then put them all in at once.
 Dr Jones - I learned a lot from your helping me. Thank you very much, Karen
 """
+from unittest import result
 
 import requests, json 
 import pandas as pd
@@ -80,7 +81,8 @@ from PIL import ImageTk, Image
 ###
 import os, io, json, argparse, six
 import google.auth
-from google.cloud import language_v1 as language
+from google.cloud import language_v1 as language, translate
+
 
 class StockGUI:
     def __init__(self, guiWin, api_key):
@@ -866,11 +868,11 @@ class StockGUI:
         if self.c.get() == 1:
             # plot close price
             title = "Closing Price"
-            x     = 'close'
+            x = 'close'
         elif self.v.get() == 1:
             # plot volume
             title = "Volume"
-            x     = 'volume'
+            x = 'volume'
         elif self.narr.get() == 1:
             # plot change
             title = "Narrative"
@@ -889,10 +891,10 @@ class StockGUI:
         gp.plot(self.df[x], color='white')
         
         start_date = str(self.df.index[0].date())
-        n          = len(self.df.index)-1
-        end_date   = str(self.df.index[n].date())
+        n = len(self.df.index)-1
+        end_date = str(self.df.index[n].date())
         
-        c_symbol   = self.symbol.get().upper() + \
+        c_symbol = self.symbol.get().upper() + \
                              " ("  + start_date + " to "  + end_date+")"
                              
         base_url = \
@@ -985,8 +987,8 @@ class StockGUI:
         self.imgwin = ttk.Label(self.mainframe, text=""). \
                 grid(column=1, row=9, columnspan=4, sticky=W)
         ######## Setup for narrative - KSF - skip plot ################  
-        x     = "narrative"
-        if x     != "narrative":    
+        x = "narrative"
+        if x!= "narrative":
             self.fig = plt.figure(figsize=(6, 4), dpi=100)
             self.fig.patch.set_facecolor('gray')
             self.fig.patch.set_alpha(0.3)
@@ -999,14 +1001,14 @@ class StockGUI:
             gp.plot(self.df[x], color='white')
             
             start_date = str(self.df.index[0].date())
-            n          = len(self.df.index)-1
-            end_date   = str(self.df.index[n].date())
+            n = len(self.df.index)-1
+            end_date = str(self.df.index[n].date())
         
-            c_symbol   = self.symbol.get().upper() + \
+            c_symbol = self.symbol.get().upper() + \
                              " ("  + start_date + " to "  + end_date+")"
         
 
-        elif x     == "narrative": 
+        elif x == "narrative":
             KSF_plot = 0
             print("\n*** #505 - KSF- no plot for Narrative ****\n")
             
@@ -1037,7 +1039,7 @@ class StockGUI:
         print(score)
         ######################################################
         x = "narrative"
-        if x     != "narrative":   
+        if x!= "narrative":
             #plt.title(c_symbol, fontdict=font1)
             plt.title(name,   fontdict=font1)
             plt.ylabel(title, fontdict=font2)
@@ -1047,7 +1049,7 @@ class StockGUI:
             self.imgobj = ImageTk.PhotoImage(Image.open('ts_plot.png'))
             self.imgwin = ttk.Label(self.mainframe, image=self.imgobj). \
                             grid(column=1, row=9, columnspan=4, sticky=W)
-        elif x     == "narrative": 
+        elif x == "narrative":
             ## process narrative coing here ##########################
             print("\n*** #546 - KSF- setup Narrative here ****\n")
             print("*** # 547 - Stock symbol 'self.symbol.get()'", self.symbol.get())
