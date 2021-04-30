@@ -219,7 +219,7 @@ class StockGUI:
         self.stock_selected.set('IBM')  
         #################################  FOR ALL YEARS: TRY  SPIN BOX ####################################################
         ttk.Label(self.stock_frame, text="PICK A TIMEFRAME").grid(column=1,row=4)
-        timedurations=("One Yr", "100 days", "all yrs")
+        timedurations=("100 days", "One Yr", "2 Years", "3 Years", "5 Years", "10 Years", "all yrs")
         self.ksftime_selected = StringVar()   ## was self.x  *** this Holds TIME DURATION selection 
         self.timedur_spinbox = Spinbox(self.stock_frame, values=timedurations, width=8, 
                              textvariable=self.ksftime_selected, font=("Arial", 15), 
@@ -784,11 +784,29 @@ class StockGUI:
             Year_url = All_Year_url
             KSF_timedur = "One Year"
             nn = 249  ## there are 249 stock market trading days in a year
+        elif ksf_ti_sel == "2 Years" :
+            Year_url = All_Year_url
+            KSF_timedur = "2 Years"  ## KSF--may need to chg this LATER, LEAVE FOR NOW
+            nn = 499  ## use  2 yrs = 2*249  of trading days based on len(series) ... it's fixed  25 lines BELOW
+        elif ksf_ti_sel == "3 Years" :
+            Year_url = All_Year_url
+            KSF_timedur = "3 Years"  ## KSF--may need to chg this LATER, LEAVE FOR NOW
+            nn = 747  ## use 3 yrs = 3*249  of trading days based on len(series) ... it's fixed  25 lines BELOW
+        elif ksf_ti_sel == "5 Years" :
+            Year_url = All_Year_url
+            KSF_timedur = "5 Years"  ## KSF--may need to chg this LATER, LEAVE FOR NOW
+            nn = 1245  ## use 5 yrs = 5*249  of trading days based on len(series) ... it's fixed  25 lines BELOW
+        elif ksf_ti_sel == "10 Years" :
+            Year_url = All_Year_url
+            KSF_timedur = "10 Years"  ## KSF--may need to chg this LATER, LEAVE FOR NOW
+            nn = 2490  ## use 10 yrs = 10*249  of trading days based on len(series) ... it's fixed  25 lines BELOW
+
         elif ksf_ti_sel == "all yrs" :
             Year_url = All_Year_url
-            KSF_timedur = "Last 100 Days"
-            nn = 0  ## use 100 trading days
+            KSF_timedur = "Last 100 Days"  ## KSF--may need to chg this LATER, LEAVE FOR NOW
+            nn = 0  ## use real number of trading days based on len(series) ... it's fixed  25 lines BELOW
         else:
+            ## this case is the "100 Days" Case
             Year_url = r"&outputsize=compact"
             KSF_timedur = "Last 100 Days"
             nn = 100  ## use 100 trading days
