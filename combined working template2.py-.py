@@ -201,7 +201,7 @@ class StockGUI:
         ######################################################################################
         # img_path = "C:\TAMU\Semester 5\Fundamentals of Busness programing\Group project/" # Path to GUI images
         img_path = "D:" # Path to GUI images
-        newsize = (480, 240)
+        newsize =  (480, 240)
         self.boat_img = Image.open(img_path+"\Boat_Skiier.png")
         self.boat_img = self.boat_img.resize(newsize)
         self.boat_img = ImageTk.PhotoImage(self.boat_img)        
