@@ -179,13 +179,8 @@ class StockGUI:
         self.v1 = ttk.Checkbutton(self.mainframe, text="Volume", 
                                   variable=self.v, command=self.plt_vol, 
                                   onvalue=1, offvalue=0). \
-                                  grid(column=4, row=8, sticky=W)
-        self.narr = IntVar()
-        self.narr.set(0)
-        self.narr1 = ttk.Checkbutton(self.mainframe, text="Narrative", 
-                                  variable=self.narr, command=self.DispNarr, 
-                                  onvalue=1, offvalue=0). \
                                   grid(column=2, row=8, sticky=W)
+
                                   
         ##################### Create a FRAME "stock_frame" for the stocks ####                                    
         self.stock_frame = ttk.Frame(self.mainframe, padding=(5, 5, 5, 5),
@@ -259,7 +254,12 @@ class StockGUI:
         ttk.Label(self.frame_b, text="Select A Language").grid(column=2,row=10)
 
         self.lang_selected = StringVar()   ## was self.x  *** this Holds STOCK - TICKER 
-        
+        self.narr = IntVar()
+        self.narr.set(0)
+        self.narr1 = ttk.Checkbutton(self.frame_b, text="Narrative",
+                                  variable=self.narr, command=self.DispNarr,
+                                  onvalue=1, offvalue=0). \
+                                  grid(column=2, row=16, sticky=S, pady=(40,0),padx=(0,15))
 
         
         
@@ -1114,10 +1114,10 @@ class StockGUI:
         ####################### YES: THIS: NARRATIVE AS A TEXT BOX ################################
         if KSF_Label == 0:
             # 1st Create Text Box
-            self.t = Text(self.mainframe, relief='sunken', wrap='word', width=33,
-                          height=32, bg='maroon', fg='white', font=('Arial', 12))
-            self.t.grid(column=1, columnspan=4, row=9, rowspan=1, 
-                      sticky=(N, W, S, E))
+            self.t = Text(self.guiWin_, relief='sunken', wrap='word', height=22, width=65,
+                          bg='maroon', fg='white', font=('Arial', 12))
+            self.t.grid(column=1, columnspan=2, row=10
+                        , rowspan=1, sticky=(N,W),pady=5, padx=5)
             
             # 2nd CLEAR the text box:
                         # Clear the Text Box  (from 1st Char to the END)
