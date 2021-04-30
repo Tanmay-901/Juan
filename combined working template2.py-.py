@@ -910,7 +910,7 @@ class StockGUI:
             x     = "narrative"
         ############################################################
 
-        self.fig = plt.figure(figsize=(9, 6), dpi=100)
+        self.fig = plt.figure(figsize=(5,4), dpi=100)
         self.fig.patch.set_facecolor('gray')
         self.fig.patch.set_alpha(0.3)
         font1 = {'family':'Arial','color':'maroon','size': 16,
@@ -957,10 +957,10 @@ class StockGUI:
         plt.ylabel(title, fontdict=font2)
         plt.grid(True)
         plt.savefig('ts_plot.png')
-        plt.show()
+        # plt.show()
         self.imgobj = ImageTk.PhotoImage(Image.open('ts_plot.png'))  ## reformat image to be acceptable
-        self.imgwin = ttk.Label(self.mainframe, image=self.imgobj). \
-                        grid(column=1, row=9, columnspan=4, sticky=W)
+        self.imgwin = ttk.Label(self.guiWin_, image=self.imgobj). \
+                        grid(column=0, row=9, columnspan=4, sticky=W,padx=90, pady=(0,20))
         ############################################################
 
 
@@ -1167,8 +1167,8 @@ class StockGUI:
             # 1st Create Text Box
             self.t = Text(self.guiWin_, relief='sunken', wrap='word', height=21, width=65,
                           bg='maroon', fg='white', font=('Arial', 12))
-            self.t.grid(column=1, columnspan=2, row=10
-                        , rowspan=1, sticky=(N,W),pady=5, padx=5)
+            self.t.grid(column=1, columnspan=2, row=9
+                        , rowspan=1, sticky=(N,W),pady=(0,20), padx=(5,20))
 
             # 2nd CLEAR the text box:
                         # Clear the Text Box  (from 1st Char to the END)
@@ -1177,7 +1177,8 @@ class StockGUI:
             ## 3rd "use 'method' to .insert() the text, starting at 1st character "1"
             self.t.insert(1.0, self.KSF_co_desc)
         ##################################################################################
-        self.lang_translate(result)
+        if self.lang_selected.get() != "English":
+            self.lang_translate(result)
         ##################################################################################
         #######################  eo NARRATIVE AS A TEXT BOX ################################
 
